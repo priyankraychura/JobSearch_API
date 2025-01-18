@@ -258,3 +258,12 @@ async def list_user_applications(user_id: Optional[str] = None):
 # async def read_users():
 #     users = list(db.job.find({}, {'_id': False}))  # Correct collection name
 #     return users
+
+
+import requests
+
+@app.get("/get-my-ip")
+def get_my_ip():
+    # Query an external service to find the outbound IP
+    response = requests.get("https://httpbin.org/ip")
+    return {"outbound_ip": response.json()["origin"]}
