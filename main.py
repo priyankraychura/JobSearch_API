@@ -8,9 +8,21 @@ from fastapi.encoders import jsonable_encoder
 from datetime import datetime
 
 
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+
+
 app = FastAPI()
-client = MongoClient("mongodb+srv://priyankraychura:f6yWILYS7Q2dZRWQ@jobsearch-dev.aqsw6.mongodb.net/?retryWrites=true&w=majority&appName=JobSearch-Dev")
+uri = "mongodb+srv://priyankraychura:f6yWILYS7Q2dZRWQ@jobsearch-dev.aqsw6.mongodb.net/?retryWrites=true&w=majority&appName=JobSearch-Dev"
+client = MongoClient(uri, server_api=ServerApi('1'))
 db = client["job_app"]  # Correct database name
+
+# Send a ping to confirm a successful connection
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
 
 class Job(BaseModel):
     id: Optional[str] = Field(None, alias="_id")  # Map `_id` to `id`
