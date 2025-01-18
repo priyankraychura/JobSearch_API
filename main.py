@@ -9,7 +9,7 @@ from datetime import datetime
 
 
 app = FastAPI()
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb+srv://priyankraychura:f6yWILYS7Q2dZRWQ@jobsearch-dev.aqsw6.mongodb.net/?retryWrites=true&w=majority&appName=JobSearch-Dev")
 db = client["job_app"]  # Correct database name
 
 class Job(BaseModel):
