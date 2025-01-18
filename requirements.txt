@@ -1,4 +1,5 @@
 fastapi
 uvicorn
 pymongo
+requests
 python-dotenv  # Optional, if you're using `.env` for MongoDB URI
